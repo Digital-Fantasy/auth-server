@@ -5,6 +5,7 @@ introduce_blueprint = Blueprint('introduce', __name__)
 
 @introduce_blueprint.route("/introduce", methods=["GET"])
 def introduce_get():
+
     return render_template("introduce.html")
 
 
