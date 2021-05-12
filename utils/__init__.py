@@ -1,1 +1,1 @@
-from get_env_var import get_env_var
+from .get_env_var import get_env_var
