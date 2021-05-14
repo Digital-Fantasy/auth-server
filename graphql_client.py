@@ -1,4 +1,6 @@
 from python_graphql_client import GraphqlClient
-
+import utils
 # Instantiate the client with an endpoint.
-gql = GraphqlClient(endpoint="https://countries.trevorblades.com")
+
+endpoint = utils.get_env_var("GRAPHQL_ENDPOINT")
+gql = GraphqlClient(endpoint=endpoint)
