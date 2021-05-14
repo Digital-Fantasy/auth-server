@@ -1,7 +1,6 @@
 from flask import request
 from functools import wraps
 import json
-from NotFound import NotFound
 
 
 def header_has_key(header_name: str, key: str):
@@ -16,7 +15,7 @@ def header_has_key(header_name: str, key: str):
             header = request.headers[header_name]
             parsed_header = json.loads(header)
             if key not in parsed_header.keys():
-                return json.dumps({"response": f"Header '{header_name}' did not include required key '{key}'"}), 400
+                return {"response": f"Header {header_name} did not include required key '{key}'"}, 400
             return incoming_request()
 
         return wrapper
