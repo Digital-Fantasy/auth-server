@@ -4,7 +4,8 @@ import json
 import jwt
 from flask import Blueprint, request, make_response
 
-import utils
+
+from utils import response
 import validation
 from graphql_client import gql
 from validation.validate import validate_name, validate_bio, validate_picture, validate_nickname, validate_phone_number, validate_username
@@ -13,7 +14,7 @@ introduce_blueprint = Blueprint('introduce', __name__)
 
 
 @introduce_blueprint.route("/introduce", methods=["GET"])
-@utils.set_content_header("application/json; charset=utf-8")
+@response.set_content_header("application/json; charset=utf-8")
 def introduce_get():
     """
     Get request handler
@@ -31,7 +32,7 @@ def introduce_get():
 @validation.body_has_key("username")
 @validation.body_has_key("pwd")
 @validation.body_key_content_min_length("pwd", 6)
-@utils.set_content_header("application/json; charset=utf-8")
+@response.set_content_header("application/json; charset=utf-8")
 def introduce_post():
     """
     Post request handler
